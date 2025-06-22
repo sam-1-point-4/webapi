@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from utils import get_people_in_space, get_iss_location
 
 def main():
@@ -14,8 +15,14 @@ def main():
     iss_location = get_iss_location()
     if iss_location:
         st.markdown("### Current Location of the International Space Station (ISS)")
+        st.markdown("Below is a map showing the real-time position of the ISS as it orbits the Earth.")
         st.write(f"Latitude: {iss_location['latitude']}, Longitude: {iss_location['longitude']}")
-        st.map(data=[[iss_location['latitude'], iss_location['longitude']]])
+        #DataFrame for st.map
+        iss_df = pd.DataFrame(
+    [[float(iss_location['latitude']), float(iss_location['longitude'])]],
+    columns=['lat', 'lon']
+)
+        st.map(iss_df)
 
 if __name__ == "__main__":
     main()
