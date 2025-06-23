@@ -243,7 +243,7 @@ pytz==2025.2
     # via pandas
 pywin32==310; sys_platform == 'win32'
     # via jupyter-core
-pywinpty==2.0.15
+pywinpty==2.0.15; sys_platform == 'win32'
     # via
     #   jupyter-server
     #   jupyter-server-terminals
